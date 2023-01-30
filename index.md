@@ -46,9 +46,10 @@ class StringServer {
 }
 ```
 
-### My first request was `/add-message?s=Hello`, which then added the word `Hello` to the webpage.
+## Examples:
+My first request was `/add-message?s=Hello`, which then added the word `Hello` to the webpage.
 ![Image](https://github.com/igerth/CSE-15L-lab-report-2/blob/main/Screenshot%202023-01-30%20at%201.19.10%20PM.png?raw=true)
 
-### My second request was `/add-message?s=How are you`, which then added the phrase `How are you` in a new line after `Hello`. 
+My second request was `/add-message?s=How are you`, which then added the phrase `How are you` in a new line after `Hello`. 
 ![Image](https://github.com/igerth/CSE-15L-lab-report-2/blob/main/Screenshot%202023-01-30%20at%201.19.30%20PM.png?raw=true)
 
