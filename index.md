@@ -109,3 +109,6 @@ static void reverseInPlace(int[] arr) {
     }
   }
 ```
+Why the fix addresses the issue: Before, the for loop was updating the input array in real-time, meaning that it worked for the first half of the array, but when it got to the second half of the array, it was calling back to the first half of the array and taking those already reversed values. So if the input array was `{ 1, 2, 3, 4, 5}` the output would be `{ 5, 4, 3, 4, 5}`. To fix this, I created a shallow copy of the input array so that in the for loop, the reversed input array could be copied while the loop iterated over the input array. This combats the previus issue. Then, I deep-copied the `store` array to the input array. 
+
+**Part 3:** In summary, one of my favorite parts from the previous two labs was learning about webservers and how to handle URL requests. I liked the customization we could come up with in handling different requests. I had no idea how this was done before and I am glad I was able to do this in lab. 
