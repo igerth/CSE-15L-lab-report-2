@@ -1,6 +1,7 @@
 # Lab Report 2 - Servers and Bugs (Week 3)
 
-**Part 1:** I wrote a mini web server called `StringServer` that supports the path and behavior that is displayed in the following screenshots. It keeps track of a single string that gets added to by incoming requests, which look like `/add-message?s=<string>`. First, here is my code which I will refer back to when describing two examples of `/add-message`.
+## Part 1:
+I wrote a mini web server called `StringServer` that supports the path and behavior that is displayed in the following screenshots. It keeps track of a single string that gets added to by incoming requests, which look like `/add-message?s=<string>`. First, here is my code which I will refer back to when describing two examples of `/add-message`.
 ```
 import java.io.IOException;
 import java.net.URI;
@@ -46,7 +47,7 @@ class StringServer {
 }
 ```
 
-## Examples:
+### Examples:
 My first request was `/add-message?s=Hello`, which then added the word `Hello` to the webpage.
 
 ![Image](https://github.com/igerth/CSE-15L-lab-report-2/blob/main/Screenshot%202023-01-30%20at%201.19.10%20PM.png?raw=true)
@@ -67,7 +68,8 @@ All relevant arguments and values remain the same for the methods and fields as 
 
 The values that do change for this specific request are the `messages` ArrayList, which now has the string `How are you` appended to it, as well as the `print` string, which starts as an empty string and is changed to a concatenation of both messages, `"Hello" + "\n" + "How are you"`. 
 
-**Part 2:** For this part, I will choose the ArrayExamples file to debug. 
+## Part 2: 
+For this part, I will choose the ArrayExamples file to debug. 
 - A failure-inducing input for the buggy program. This is for the `reverseInPlace` method: 
 ```
 public class ArrayTests {
@@ -111,4 +113,5 @@ static void reverseInPlace(int[] arr) {
 ```
 Why the fix addresses the issue: Before, the for loop was updating the input array in real-time, meaning that it worked for the first half of the array, but when it got to the second half of the array, it was calling back to the first half of the array and taking those already reversed values. So if the input array was `{ 1, 2, 3, 4, 5}` the output would be `{ 5, 4, 3, 4, 5}`. To fix this, I created a shallow copy of the input array so that in the for loop, the reversed input array could be copied while the loop iterated over the input array. This combats the previus issue. Then, I deep-copied the `store` array to the input array. 
 
-**Part 3:** In summary, one of my favorite parts from the previous two labs was learning about webservers and how to handle URL requests. I liked the customization we could come up with in handling different requests. I had no idea how this was done before and I am glad I was able to do this in lab. 
+## Part 3:
+In summary, one of my favorite parts from the previous two labs was learning about webservers and how to handle URL requests. I liked the customization we could come up with in handling different requests. I had no idea how this was done before and I am glad I was able to do this in lab. 
