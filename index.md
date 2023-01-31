@@ -67,5 +67,45 @@ All relevant arguments and values remain the same for the methods and fields as 
 
 The values that do change for this specific request are the `messages` ArrayList, which now has the string `How are you` appended to it, as well as the `print` string, which starts as an empty string and is changed to a concatenation of both messages, `"Hello" + "\n" + "How are you"`. 
 
-**Part 2:** 
+**Part 2:** For this part, I will choose the ArrayExamples file to debug. 
+- A failure-inducing input for the buggy program. This is for the `reverseInPlace` method: 
+```
+public class ArrayTests {
+	@Test 
+	public void testReverseInPlace() {
+    int[] myInput = {1, 2, 3, 4, 5};
+    ArrayExamples.reverseInPlace(myInput);
+    assertArrayEquals(new int[]{5, 4, 3, 2, 1}, myInput);
+	}
+```
+An input that doesn’t induce a failure (Referencing a test that was provided):
+```
+public void testReverseInPlace() {
+    int[] input1 = { 3 };
+    ArrayExamples.reverseInPlace(input1);
+    assertArrayEquals(new int[]{ 3 }, input1);
+	}
+```
+The symptom. I noticed that the `reverseInPlace` method was reversing the first half of the array, but not reversing the second half. Evident in this screenshot:
 
+![Image](https://github.com/igerth/CSE-15L-lab-report-2/blob/main/Screenshot%202023-01-30%20at%204.55.35%20PM.png?raw=true)
+
+The bug with the before-and-after code change required to fix it:
+```
+static void reverseInPlace(int[] arr) {
+    for(int i = 0; i < arr.length; i += 1) {
+      arr[i] = arr[arr.length - i - 1];
+    }
+  }
+```
+```
+static void reverseInPlace(int[] arr) {
+    int[] store = new int[arr.length];
+    for(int i = 0; i < arr.length; i += 1) {
+      store[i] = arr[arr.length - i - 1];
+    }
+    for(int i = 0; i < arr.length; i += 1) {
+      arr[i] = store[i];
+    }
+  }
+```
