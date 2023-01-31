@@ -51,9 +51,15 @@ My first request was `/add-message?s=Hello`, which then added the word `Hello` t
 
 ![Image](https://github.com/igerth/CSE-15L-lab-report-2/blob/main/Screenshot%202023-01-30%20at%201.19.10%20PM.png?raw=true)
 
-Inside the `Handler` class, the first if statement runs inside the `HandleRequest` method. It then uses the `getPath` method to get the path of the URI, and because the path equals `/add-message`, it uses the `getQuery` method and makes a String array with the first element being to the left of the = and the second element being to the right. 
+Inside the `Handler` class, the first if statement runs inside the `HandleRequest` method. It then uses the `getPath` method to get the path of the URL, and because the path equals `/add-message`, it uses the `getQuery` method and makes a String array with the first element `s` being to the left of the `=` and the second element `Hello` being to the right. Because the left-hand side equals `s`, the right-hand side `Hello` gets added to the `messages` ArrayList I created to be then concatenated into one string, with each message seperated by `\n`, and then returned. 
+
+The most important method in this is the `handleRequest` method inside of the `Handler` class, which takes the URL and processes the request in the URL path to return the string of inputs. Within the method, there are values such as the `message` array, which splits the query at the `=`, and then the `messages` ArrayList where the message string in the query is added, and then finally the `print` string, which is a concatenation of all the messages seperated by the newline character. 
+
+From this specific request, the `Hello` message is added to the `messages` ArrayList, which changes the value of `messages` since it was empty before this call. The `print` string is also changed from and empty string to `Hello`, since `Hello` is the message we need to return. 
 
 My second request was `/add-message?s=How are you`, which then added the phrase `How are you` in a new line after `Hello`. 
 
 ![Image](https://github.com/igerth/CSE-15L-lab-report-2/blob/main/Screenshot%202023-01-30%20at%201.19.30%20PM.png?raw=true)
+
+The methods called are exactly similar to when they were called in the previous example with `Hello`, however, `How are you` now gets added to the `messages` ArrayList and the `print` string now prints both `"Hello" + "\n" + "How are you"`. 
 
