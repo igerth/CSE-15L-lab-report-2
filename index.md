@@ -63,3 +63,7 @@ My second request was `/add-message?s=How are you`, which then added the phrase 
 
 The methods called are exactly similar to when they were called in the previous example with `Hello`, however, `How are you` now gets added to the `messages` ArrayList and the `print` string now prints both `"Hello" + "\n" + "How are you"`. 
 
+All relevant arguments and values remain the same for the methods and fields as well. 
+
+The values that do change for this specific request are the `messages` ArrayList, which now has the string `How are you` appended to it, as well as the `print` string, which starts as an empty string and is changed to a concatenation of both messages, `"Hello" + "\n" + "How are you"`. 
+
