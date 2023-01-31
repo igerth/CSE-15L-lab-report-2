@@ -70,6 +70,7 @@ The values that do change for this specific request are the `messages` ArrayList
 
 ## Part 2: 
 For this part, I will choose the ArrayExamples file to debug. 
+
 A failure-inducing input for the buggy program. This is for the `reverseInPlace` method: 
 ```
 public class ArrayTests {
