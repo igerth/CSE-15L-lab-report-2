@@ -80,7 +80,7 @@ public class ArrayTests {
     assertArrayEquals(new int[]{5, 4, 3, 2, 1}, myInput);
 	}
 ```
-An input that doesn’t induce a failure (Referencing a test that was provided):
+- An input that doesn’t induce a failure (Referencing a test that was provided):
 ```
 public void testReverseInPlace() {
     int[] input1 = { 3 };
@@ -88,11 +88,11 @@ public void testReverseInPlace() {
     assertArrayEquals(new int[]{ 3 }, input1);
 	}
 ```
-The symptom. I noticed that the `reverseInPlace` method was reversing the first half of the array, but not reversing the second half. Evident in this screenshot:
+- The symptom. I noticed that the `reverseInPlace` method was reversing the first half of the array, but not reversing the second half. Evident in this screenshot:
 
 ![Image](https://github.com/igerth/CSE-15L-lab-report-2/blob/main/Screenshot%202023-01-30%20at%204.55.35%20PM.png?raw=true)
 
-The bug with the before-and-after code change required to fix it:
+- The bug with the before-and-after code change required to fix it:
 ```
 static void reverseInPlace(int[] arr) {
     for(int i = 0; i < arr.length; i += 1) {
@@ -111,7 +111,7 @@ static void reverseInPlace(int[] arr) {
     }
   }
 ```
-Why the fix addresses the issue: Before, the for loop was updating the input array in real-time, meaning that it worked for the first half of the array, but when it got to the second half of the array, it was calling back to the first half of the array and taking those already reversed values. So if the input array was `{ 1, 2, 3, 4, 5}` the output would be `{ 5, 4, 3, 4, 5}`. To fix this, I created a shallow copy of the input array so that in the for loop, the reversed input array could be copied while the loop iterated over the input array. This combats the previus issue. Then, I deep-copied the `store` array to the input array. 
+- Why the fix addresses the issue: Before, the for loop was updating the input array in real-time, meaning that it worked for the first half of the array, but when it got to the second half of the array, it was calling back to the first half of the array and taking those already reversed values. So if the input array was `{ 1, 2, 3, 4, 5}` the output would be `{ 5, 4, 3, 4, 5}`. To fix this, I created a shallow copy of the input array so that in the for loop, the reversed input array could be copied while the loop iterated over the input array. This combats the previus issue. Then, I deep-copied the `store` array to the input array. 
 
 ## Part 3:
 In summary, one of my favorite parts from the previous two labs was learning about webservers and how to handle URL requests. I liked the customization we could come up with in handling different requests. I had no idea how this was done before and I am glad I was able to do this in lab. 
